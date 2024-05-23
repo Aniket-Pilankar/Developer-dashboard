@@ -19,6 +19,7 @@ npm start
 
 - Select the data of the developer and get their respective data in form of charts
 - Implementation Light & Dark Mode
+- Use MVVM design pattern
 - Implementation of Redux for state management
 
 ## Screenshots of project
