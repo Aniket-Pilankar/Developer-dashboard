@@ -5,6 +5,22 @@
 npm start
 ```
 
+## 🛠 Tech Stack
+
+- React
+- Typescript
+- Redux-Toolkit and Redux-Thunk
+- Nivo Charts
+- Material-UI
+- Json Server (Backend)
+- Axios
+
+## Functionality
+
+- Select the data of the developer and get their respective data in form of charts
+- Implementation Light & Dark Mode
+- Implementation of Redux for state management
+
 ## Screenshots of project
 
 # Light Mode
