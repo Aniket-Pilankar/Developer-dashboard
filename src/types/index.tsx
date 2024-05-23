@@ -46,10 +46,8 @@ export interface Row {
 }
 
 export interface IData {
-  // data: {
   AuthorWorklog: {
     activityMeta: ActivityMeta[];
     rows: Row[];
   };
-  // };
 }

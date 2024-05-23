@@ -14,12 +14,16 @@ import TopBar from "./shared-components/Topbar";
 import CalendarChart from "./chart-components/CalendarChart";
 import LineChart from "./chart-components/LineChart";
 import { getName } from "./shared-components/Topbar/helper";
+import { getDeveloperInfo } from "./utils/helper";
 
-function App() {
+function useAppVM() {
   const dispatch = useAppDispatch();
   const activity = useSelector(selectActivity);
+
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const developerInfo = getDeveloperInfo({ name, activity });
 
   const handleChange = (event: SelectChangeEvent) => {
     setName(event.target.value as string);
@@ -28,6 +32,7 @@ function App() {
   useEffect(
     function initPage() {
       setIsLoading(true);
+
       dispatch(fetchDeveloperActivity())
         .then((res) => {
           console.log("res:", res);
@@ -41,13 +46,33 @@ function App() {
     [dispatch]
   );
 
-  if (isLoading) return <Loader />;
+  return { isLoading, name, handleChange, developerInfo };
+}
+
+function App() {
+  const { isLoading, name, handleChange, developerInfo } = useAppVM();
+
+  if (isLoading)
+    return (
+      <Stack
+        position="absolute"
+        top={"50%"}
+        left={"50%"}
+        sx={{ transform: "traslate(-50%,-50%)" }}
+      >
+        <Loader />
+      </Stack>
+    );
   return (
     <Stack mt={10} p={5}>
       <TopBar name={name} onChange={handleChange} />
 
       <Box>
-        <Header title="Day Activity of Developer" subtitle={name} />
+        <Header
+          title="Day Activity of Developer"
+          subtitle={name}
+          activeDays={developerInfo?.activeDays.days}
+        />
         <Box height="500px">
           <BarChartComp name={name} />
         </Box>

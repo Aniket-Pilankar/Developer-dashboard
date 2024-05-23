@@ -28,9 +28,7 @@ const TopBar = ({ name, onChange: handleChange }: TopBarProps) => {
           {namesOfDevelopers && (
             <Box sx={{ minWidth: 120, flexGrow: 1, padding: "10px" }}>
               <FormControl>
-                <InputLabel id="demo-simple-select-label">
-                  Name of Developer
-                </InputLabel>
+                <InputLabel id="demo-simple-select-label">Name</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
